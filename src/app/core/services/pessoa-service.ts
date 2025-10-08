@@ -1,0 +1,31 @@
+import { Injectable } from '@angular/core';
+import { Pessoa } from '../types/types';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PessoaService {
+  listaPessoa: Pessoa[] = [];
+
+
+  constructor() { }
+
+  listar() {
+    return [
+      {
+        id: 1,
+        nome: 'Enzo',
+        sobrenome: 'Silva',
+        dtNascimento: '2005-10-1'
+      },
+      {
+        id: 2,
+        nome: 'Valentina',
+        sobrenome: 'Santos',
+        dtNascimento: '2007-01-01'
+      }
+
+    ]
+  }
+
+}

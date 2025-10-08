@@ -1,16 +1,31 @@
 import { Component, signal } from '@angular/core';
-import { Header } from './shared/header/header';
-import { Footer } from './shared/footer/footer'; 
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from "./shared/header/header";
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [Header, Footer],
+  imports: [RouterOutlet, HeaderComponent, FormsModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = ('Ola, Mundo!');
-  protected readonly paragrf = ('Este é o meu primeiro projeto em Angular!');
+  protected readonly title = signal('angularcrud');
+  titulo: string = 'Olá Mundo'
+  nome: string = 'Seu Nome'
+  sobrenome: string = '';
+  textoBotao: string = 'Clique aqui!';
+  botaoDesabilitado: boolean = false;
+  mensagem: string = '';
+
+
+  onBotaoClicado() {
+    this.mensagem = 'Você clicou no botão!';
+  }
+
+  onKeyUp(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.mensagem = `Olá ${input.value} !`;
+  }
+
 }
-
-
